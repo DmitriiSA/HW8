@@ -1,0 +1,27 @@
+---
+- name: Prepare build enviroment
+  hosts: buid
+  become: yes
+
+  tasks:
+
+    - name: install packages on build
+      apt:
+       name:
+         - default-jdk
+         - maven
+         - git
+       state: present
+
+- name: Prepare prod
+  hosts: prod
+  become: yes
+
+  tasks:
+
+    - name: install packages on prod
+      apt:
+        name:
+          - default-jdk
+          - tomcat9
+        state: present
