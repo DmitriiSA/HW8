@@ -30,14 +30,6 @@
         flat: yes
       register: fetched_file
 
-    - name: copy war file
-      synchronize:
-        src: /tmp/hello-1.0.war
-        dest: /var/lib/tomcat/webapps/
-        delegate_to: prod
-      tags: sync
-
-
 - name: Prepare prod
   hosts: prod
   become: yes
@@ -50,3 +42,10 @@
           - default-jdk
           - tomcat9
         state: present
+
+    - name: copy war file
+      synchronize:
+        src: /tmp/hello-1.0.war
+        dest: /var/lib/tomcat/webapps/
+        delegate_to: prod
+      tags: sync
