@@ -1,6 +1,6 @@
 ---
 - name: Prepare build enviroment
-  hosts: buid
+  hosts: build
   become: yes
 
   tasks:
