@@ -23,6 +23,12 @@
       args:
         chdir: /tmp/hello
 
+    - name: copy war file
+      synchronize:
+        src: /tmp/hello/target/hello-1.0.war
+        dest: /var/lib/tomcat/webapps/
+        delegate_to: prod
+      tags: sync
 
 - name: Prepare prod
   hosts: prod
