@@ -44,8 +44,12 @@
         state: present
 
     - name: copy war file
-      synchronize:
+      copy:
         src: /tmp/hello-1.0.war
         dest: /var/lib/tomcat/webapps/
-        delegate_to: prod
-      tags: sync
+
+#      synchronize:
+#        src: /tmp/hello-1.0.war
+#        dest: /var/lib/tomcat/webapps/
+#        delegate_to: prod
+#      tags: sync
