@@ -13,6 +13,17 @@
          - git
        state: present
 
+    - name: Clone project
+      git:
+        repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
+        dest: /tmp/hello
+
+    - name: build project
+      command: mvn package
+      args:
+        chdir: /tmp/hello
+
+
 - name: Prepare prod
   hosts: prod
   become: yes
